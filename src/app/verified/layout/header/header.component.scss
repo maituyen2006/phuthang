@@ -1,0 +1,60 @@
+.navbar {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.5);
+  background-color: #1e88e5;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+.navbar-toggler {
+  background-color: #fff;
+}
+.avatar {
+  border-radius: 50%;
+}
+.navbar-nav .nav-link {
+  color: #fff;
+}
+@media (min-width: 768px) {
+  .navbar-nav .nav-link {
+        padding: 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar-nav .nav-link .mat-icon {
+    display: block;
+    margin: 0 auto;
+  }
+  .navbar-nav .nav-account {
+    margin-left: auto;
+    display: flex;
+  }
+  .navbar-nav .nav-account>button{
+    background-color: transparent;
+    color: #fff
+  }
+}
+@media (max-width: 767px) {
+  .navbar-nav .nav-link .mat-icon {
+    vertical-align: text-bottom;
+    margin-right: 5px;
+  }
+  .navbar-nav .nav-account {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 1499px) {
+  .navbar-nav .nav-link {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 1199px) {
+  .navbar-nav .nav-link {
+    padding: 0 5px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Xác nhận</h1>
+<div mat-dialog-content>
+  <p>{{question}}</p>
+</div>
+<div mat-dialog-actions class="justify-content-between">
+  <button mat-raised-button color="warn" (click)="onConfirmClick(false)">Không</button>
+  <button mat-raised-button color="primary" (click)="onConfirmClick(true)">Có</button>
+</div>

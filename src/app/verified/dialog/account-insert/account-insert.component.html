@@ -1,0 +1,644 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} Tài Khoản</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <div class="d-flex flex-column" mat-dialog-content>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Account
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="name" placeholder="name" required>
+              <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="accountNumber" placeholder="accountNumber" required>
+              <mat-error *ngIf="accountNumber.invalid">{{getErrorMessage(accountNumber)}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="revenue" placeholder="revenue">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="numberOfEmployees" required type="number" min="1" placeholder="numberOfEmployees">
+              <mat-error *ngIf="numberOfEmployees.invalid">{{getErrorMessage(numberOfEmployees)}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="description" placeholder="description">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="sic" placeholder="sic">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="ownershipCode" placeholder="ownershipCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="marketCap" placeholder="marketCap">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="sharesOutstanding" placeholder="sharesOutstanding">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="stockExchange" placeholder="stockExchange">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="webSiteUrl" placeholder="webSiteUrl">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="ftpSiteUrl" placeholder="ftpSiteUrl">
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Address
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1AddressId" placeholder="address1AddressId">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1AddressTypeCode" placeholder="address1AddressTypeCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Name" placeholder="address1Name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1PrimaryContactName" placeholder="address1PrimaryContactName">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Line1" placeholder="address1Line1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Line2" placeholder="address1Line2">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Line3" placeholder="address1Line3">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1City" placeholder="address1City">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1StateOrProvince" placeholder="address1StateOrProvince">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1County" placeholder="address1County">
+            </mat-form-field>
+          </div>
+    
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1PostOfficeBox" placeholder="address1PostOfficeBox">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1PostalCode" placeholder="address1PostalCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1UTCOffset" placeholder="address1UTCOffset">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1UPSZone" placeholder="address1UPSZone">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Telephone1" placeholder="address1Telephone1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1ShippingMethodCode" placeholder="address1ShippingMethodCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Telephone2" placeholder="address1Telephone2">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Telephone3" placeholder="address1Telephone3">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Fax" placeholder="address1Fax">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address1Composite" placeholder="address1Composite">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2AddressId" placeholder="address2AddressId">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Name" placeholder="address2Name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2PrimaryContactName" placeholder="address2PrimaryContactName">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Line1" placeholder="address2Line1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Line2" placeholder="address2Line2">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Line3" placeholder="address2Line3">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2City" placeholder="address2City">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2StateOrProvince" placeholder="address2StateOrProvince">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2County" placeholder="address2County">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2PostOfficeBox" placeholder="address2PostOfficeBox">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2PostalCode" placeholder="address2PostalCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Country" placeholder="address2Country">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2UTCOffset" placeholder="address2UTCOffset">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2UPSZone" placeholder="address2UPSZone">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Telephone2" placeholder="address2Telephone2">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Telephone3" placeholder="address2Telephone3">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Fax" placeholder="address2Fax">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="address2Composite" placeholder="address2Composite">
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Contact
+          </mat-panel-title>      
+          
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="preferredContactMethodCode" placeholder="preferredContactMethodCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="eMailAddress1" placeholder="eMailAddress1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="eMailAddress2" placeholder="eMailAddress2">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="eMailAddress3" placeholder="eMailAddress3">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="telephone1" placeholder="telephone1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="telephone2" placeholder="telephone2">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="fax" placeholder="fax">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="telephone3" placeholder="telephone3">
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-action-row>
+
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+           Action
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+
+        <div class="row">
+
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="participatesInWorkflow" placeholder="participatesInWorkflow">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotPhone" placeholder="doNotPhone">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotFax" placeholder="doNotFax">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotEMail" placeholder="doNotEMail">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotPostalMail" placeholder="doNotPostalMail">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotBulkEMail" placeholder="doNotBulkEMail">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotBulkPostalMail" placeholder="doNotBulkPostalMail">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="creditOnHold" placeholder="creditOnHold">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="merged" placeholder="merged">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="doNotSendMM" placeholder="doNotSendMM">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="followEmail" placeholder="followEmail">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="marketingOnly" placeholder="marketingOnly">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="statusCode" placeholder="statusCode">
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Edit
+          </mat-panel-title>
+         
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="industryCode" placeholder="industryCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="territoryCode" placeholder="territoryCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="accountClassificationCode" placeholder="accountClassificationCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="businessTypeCode" placeholder="businessTypeCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="parentAccountId" placeholder="parentAccountId">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="stateCode" placeholder="stateCode">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="lastUsedInCampaign" placeholder="lastUsedInCampaign">
+            </mat-form-field>
+          </div>
+          <mat-datepicker #picker></mat-datepicker>
+
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Payment
+          </mat-panel-title>
+         
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="paymentTermsCode" placeholder="paymentTermsCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="shippingMethodCode" placeholder="shippingMethodCode">
+            </mat-form-field>
+          </div>
+
+
+
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="creditLimit" placeholder="creditLimit">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="masterId" placeholder="masterId">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="exchangeRate" placeholder="exchangeRate">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="transactionCurrencyId" placeholder="transactionCurrencyId">
+            </mat-form-field>
+          </div>
+
+
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Calendar
+          </mat-panel-title>
+         
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="preferredAppointmentDayCode" placeholder="preferredAppointmentDayCode">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="preferredSystemUserId" placeholder="preferredSystemUserId">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="preferredAppointmentTimeCode" placeholder="preferredAppointmentTimeCode">
+            </mat-form-field>
+          </div>
+
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+           Years of operation
+          </mat-panel-title>
+         
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="aging30" placeholder="aging30">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="aging60" placeholder="aging60">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="aging90" placeholder="aging90">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="aging30Base" placeholder="aging30Base">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="aging90Base" placeholder="aging90Base">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="aging60Base" placeholder="aging60Base">
+            </mat-form-field>
+          </div>
+
+
+
+          <mat-datepicker #picker></mat-datepicker>
+
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Statistical
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="revenueBase" placeholder="revenueBase">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-2 col-12">
+            <mat-form-field>
+              <input matInput [formControl]="marketCapBase" placeholder="marketCapBase">
+            </mat-form-field>
+          </div>
+
+
+          <mat-datepicker #picker></mat-datepicker>
+
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </div>
+  <div mat-dialog-actions class="justify-content-between">
+    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" >
+      <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+      Lưu
+    </button>
+  </div>
+</form>

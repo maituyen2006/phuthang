@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <mat-card class="example-card">
+    <mat-card-header class="justify-content-between">
+      <mat-card-title>Danh sách quyền hệ thống</mat-card-title>
+      <button mat-raised-button color="primary" (click)="insert()">Thêm mới quyền hệ thống</button>
+    </mat-card-header>
+    <br />
+    <mat-card-content>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" width="100%" class="mat-elevation-z8">
+          <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Tên quyền</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+
+          <!-- Username Column -->
+          <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef>Mã quyền</th>
+            <td mat-cell *matCellDef="let element">{{element.code}}</td>
+          </ng-container>
+
+          <!-- IsActive Column -->
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+            <td mat-cell *matCellDef="let element">
+              <ng-container [ngSwitch]="element.isActive">
+                <span class="text-success" *ngSwitchCase="true">Mở khóa</span>
+                <span class="text-danger" *ngSwitchDefault>Khóa</span>
+              </ng-container>
+            </td>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef style="width:1%">#</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-menu #appMenu="matMenu" xPosition="before">
+                <button (click)="edit(element.id)" mat-menu-item>Sửa quyền</button>
+                <button (click)="permission(element)" mat-menu-item>Phân quyền</button>
+                <button (click)="block(element.id)" mat-menu-item>{{element.isActive?"Khóa":"Mở khóa"}} quyền</button>
+                <button (click)="delete(element.id)" mat-menu-item>Xóa quyền</button>
+              </mat-menu>
+              <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="pager != null">
+      <mat-paginator [length]="pager.totalResult" [pageSize]="pager.displayPerPage" [pageSizeOptions]="[5, 10, 25, 50]"
+        [pageIndex]="pager.currentPage-1" (page)="reloadPaging($event)">
+      </mat-paginator>
+    </mat-card-actions>
+  </mat-card>
+</div>

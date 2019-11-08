@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} Tín dụng chỉ định</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <div class="d-flex flex-column" mat-dialog-content>
+    <!-- <mat-form-field>
+          <input matInput [formControl]="paymentMethodId" required placeholder="ID">
+          <mat-error *ngIf="paymentMethodId.invalid">{{getErrorMessage(paymentMethodId)}}</mat-error>
+        </mat-form-field> -->
+    <mat-form-field>
+      <input matInput [formControl]="createdBy" required placeholder="Được tại bởi">
+      <mat-error *ngIf="createdBy.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="modifiedBy" required placeholder="Sửa đổi bởi">
+      <mat-error *ngIf="modifiedBy.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="importSequenceNumber" required placeholder="Nhập số thứ tự">
+      <!-- <mat-error *ngIf="importSequenceNumber.invalid">{{getErrorMessage(importSequenceNumber)}}</mat-error> -->
+    </mat-form-field>
+    <p>Thông tin bổ sung</p>
+    <mat-form-field>
+      <input matInput [formControl]="versionNumber" placeholder="Số phiên bản" type="versionNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="name" required placeholder="name">
+      <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="creditTypedisplay" required placeholder="Loại tín dụng">
+      <mat-error *ngIf="creditTypedisplay.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Giao dịch</mat-label>
+      <mat-select [formControl]="transactionId">
+        <mat-option *ngFor="let transaction of transactions" [value]="transaction">
+          {{transaction.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="transactionId.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="justify-content-between">
+    <button mat-raised-button (click)="dialogRef.close()"type="button">Hủy</button>
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon aria-label="Example icon-button with a heart icon">OK</mat-icon>
+    </button>
+  </div>
+</form>

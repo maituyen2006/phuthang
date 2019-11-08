@@ -1,0 +1,215 @@
+
+  
+    <h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} Delivery Framework Description</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <!-- <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+          <input matInput [formControl]="name" required placeholder="Name">
+          <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [formControl]="createdBy" required placeholder="Created By">
+          <mat-error *ngIf="createdBy.invalid">{{getErrorMessage(createdBy)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [formControl]="description" required placeholder="Description">
+          <mat-error *ngIf="description.invalid">{{getErrorMessage(description)}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div mat-dialog-actions class="justify-content-between">
+        <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+          Lưu
+        </button>
+      </div> -->
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Bản ghi
+            </mat-panel-title>
+            <mat-panel-description>
+              Điền bản ghi
+              <mat-icon>chrome_reader_mode</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+
+          <mat-form-field>
+            <input matInput [formControl]="createdOn"  required [matDatepicker]="picker" placeholder="Created On">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-error *ngIf="createdOn.invalid">{{getErrorMessage(createdOn)}}</mat-error>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput [formControl]="createdOnBehalfBy"  placeholder="Created On Be Half By">
+            <mat-error *ngIf="createdOnBehalfBy.invalid">{{getErrorMessage(createdOnBehalfBy)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="importSequenceNumber" type="number"  placeholder="Import Sequence Number">
+            <mat-error *ngIf="importSequenceNumber.invalid">{{getErrorMessage(importSequenceNumber)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="ownerIdType"  placeholder="Owner Id Type">
+            <mat-error *ngIf="ownerIdType.invalid">{{getErrorMessage(ownerIdType)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="ownerId"  placeholder="Owner Id">
+            <mat-error *ngIf="ownerId.invalid">{{getErrorMessage(ownerId)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="utcconversionTimeZoneCode" type="number"  placeholder="Utc Conversion Time Zone Code">
+            <mat-error *ngIf="utcconversionTimeZoneCode.invalid">{{getErrorMessage(utcconversionTimeZoneCode)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="versionNumber" type="number"  placeholder="Version Number">
+            <mat-error *ngIf="versionNumber.invalid">{{getErrorMessage(versionNumber)}}</mat-error>
+          </mat-form-field>
+       
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Hồ sơ
+            </mat-panel-title>
+            <mat-panel-description>
+              Điền hồ sơ
+              <mat-icon>assignment_ind</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <input matInput [formControl]="createdBy" placeholder="Created By">
+            <mat-error *ngIf="createdBy.invalid">{{getErrorMessage(createdBy)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="modifiedOn" [matDatepicker]="picker1" placeholder="Modified On">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="modifiedBy"  placeholder="Modified By" >
+            <mat-error *ngIf="modifiedBy.invalid">{{getErrorMessage(modifiedBy)}}</mat-error>
+          </mat-form-field>
+          
+          
+          <mat-form-field>
+            <input matInput [formControl]="modifiedOnBehalfBy"  placeholder="Modified On Be Half By">
+            <mat-error *ngIf="modifiedOnBehalfBy.invalid">{{getErrorMessage(modifiedOnBehalfBy)}}</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <input matInput [formControl]="overriddenCreatedOn"  [matDatepicker]="picke2" placeholder="Override Created On">
+            <mat-datepicker-toggle matSuffix [for]="picke2"></mat-datepicker-toggle>
+            <mat-datepicker #picke2></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput [formControl]="owningBusinessUnit"  placeholder="Owning Business Unit">
+            <mat-error *ngIf="owningBusinessUnit.invalid">{{getErrorMessage(owningBusinessUnit)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="owningUser"  placeholder="Owning User">
+            <mat-error *ngIf="owningUser.invalid">{{getErrorMessage(owningUser)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="owningTeam"  placeholder="Owning Team">
+            <mat-error *ngIf="owningTeam.invalid">{{getErrorMessage(owningTeam)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="timeZoneRuleVersionNumber" type="number"  placeholder="Time Zone Rule Version Number">
+            <mat-error *ngIf="timeZoneRuleVersionNumber.invalid">{{getErrorMessage(timeZoneRuleVersionNumber)}}</mat-error>
+          </mat-form-field>
+
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Mô tả
+            </mat-panel-title>
+            <mat-panel-description>
+              Mô tả thông tin
+              <mat-icon>description</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+          <mat-form-field>
+            <input matInput [formControl]="name" required placeholder="Name">
+            <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <input matInput [formControl]="stateCode" type="number"  placeholder="State Code">
+            <mat-error *ngIf="stateCode.invalid">{{getErrorMessage(stateCode)}}</mat-error>
+          </mat-form-field>
+                    
+          <mat-form-field>
+            <input matInput [formControl]="stateCodedisplay"  placeholder="State Code Display">
+            <mat-error *ngIf="stateCodedisplay.invalid">{{getErrorMessage(stateCodedisplay)}}</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput [formControl]="statusCode" type="number"  placeholder="Status Code">
+            <mat-error *ngIf="statusCode.invalid">{{getErrorMessage(statusCode)}}</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput [formControl]="statusCodedisplay"  placeholder="Status Code Display">
+            <mat-error *ngIf="statusCodedisplay.invalid">{{getErrorMessage(statusCodedisplay)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Delivery Framework Id" required [formControl]="deliveryFrameworkInput"
+              [matAutocomplete]="autoDeliveryFrameworkId">
+            <mat-autocomplete #autoDeliveryFrameworkId="matAutocomplete">
+              <mat-option (click)="this.deliveryFrameworkId.setValue(deliveryFramework);" *ngFor="let deliveryFramework of filteredDeliveryFramework | async"
+                [value]="deliveryFramework.name">
+                {{deliveryFramework.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="deliveryFrameworkInput.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="description"  placeholder="Description">
+            <mat-error *ngIf="description.invalid">{{getErrorMessage(description)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="typeId"  placeholder="Type Id">
+            <mat-error *ngIf="typeId.invalid">{{getErrorMessage(typeId)}}</mat-error>
+          </mat-form-field>
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" type="submit" (click)="nextStep()">End</button>
+            
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+      </mat-accordion>
+      
+    </form>
+ 
+

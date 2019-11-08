@@ -1,0 +1,245 @@
+<h1 mat-dialog-title>{{isEdit?"Update":"Add"}} credit package</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="d-flex flex-column" mat-dialog-content>
+
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                
+                    <mat-panel-title>
+                        Creator
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="createdBy" required placeholder="createdBy">
+                    <mat-error *ngIf="createdBy.invalid">{{getErrorMessage(createdBy)}}</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="modifiedBy" placeholder="modifiedBy">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="createdOnBehalfBy" placeholder="createdOnBehalfBy">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="modifiedOnBehalfBy" placeholder="modifiedOnBehalfBy">
+                </mat-form-field>
+                </div>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+                
+                
+            </mat-expansion-panel>
+        
+            <!---->
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Date
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>date_range</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="createdOn" required placeholder="createdOn" [matDatepicker]="dateq" (focus)="dateq.open()" readonly>
+                    <mat-error *ngIf="createdOn.invalid">{{getErrorMessage(createdOn)}}</mat-error>
+                </mat-form-field>
+                <mat-datepicker #dateq></mat-datepicker>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="modifiedOn" placeholder="modifiedOn" [matDatepicker]="dateq1" (focus)="dateq1.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #dateq1></mat-datepicker>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="overriddenCreatedOn" placeholder="overriddenCreatedOn" [matDatepicker]="dateq2" (focus)="dateq2.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #dateq2></mat-datepicker>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="validToDate" placeholder="validToDate" [matDatepicker]="dateq3" (focus)="dateq3.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #dateq3></mat-datepicker>
+                </div>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <!---->
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Owner
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="ownerId" required placeholder="ownerId">
+                    <mat-error *ngIf="ownerId.invalid">{{getErrorMessage(ownerId)}}</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="ownerIdType" placeholder="ownerIdType">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="owningBusinessUnit" placeholder="owningBusinessUnit">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="owningUser" placeholder="owningUser">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="owningTeam" placeholder="owningTeam">
+                </mat-form-field>
+                </div>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <!---->
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Status
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>repeat</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="statusCode" required placeholder="statusCode">
+                    <mat-error *ngIf="statusCode.invalid">{{getErrorMessage(statusCode)}}</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="statusCode_display" placeholder="statusCode_display">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="stateCode" placeholder="stateCode">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="stateCode_display" placeholder="stateCode_display">
+                </mat-form-field>
+                </div>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <!---->
+            <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Type of credit
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>credit_card</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="creditPlanCampaignId" required placeholder="creditPlanCampaignId">
+                    <mat-error *ngIf="creditPlanCampaignId.invalid">{{getErrorMessage(creditPlanCampaignId)}}</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="creditType" placeholder="creditType">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="creditType_display" placeholder="creditType_display">
+                </mat-form-field>
+                </div>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <!---->
+            <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Version
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>remove_from_queue</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row">
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="versionNumber" required placeholder="versionNumber">
+                    <mat-error *ngIf="versionNumber.invalid">{{getErrorMessage(versionNumber)}}</mat-error>
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="timeZoneRuleVersionNumber" placeholder="timeZoneRuleVersionNumber">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="UTCConversionTimeZoneCode" placeholder="UTCConversionTimeZoneCode">
+                </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                <mat-form-field>
+                    <input matInput [formControl]="importSequenceNumber" placeholder="importSequenceNumber">
+                </mat-form-field>
+                </div>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" type="submit">Save</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div mat-dialog-actions class="justify-content-between">
+        <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+    </div>
+</form>

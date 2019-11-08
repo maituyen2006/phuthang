@@ -1,0 +1,258 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} thanh toán</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Người khởi tạo
+                </mat-panel-title>
+                <mat-panel-description>
+
+                    <mat-icon>perm_identity</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+                <input matInput [formControl]="createdBy" required placeholder="Người tạo">
+                <mat-error *ngIf="createdBy.invalid">{{getErrorMessage(createdBy)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="modifiedBy" required placeholder="Người sửa đổi">
+                <mat-error *ngIf="modifiedBy.invalid">{{getErrorMessage(modifiedBy)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="importSequenceNumber" required type="number" min="0" placeholder="Số thứ tự">
+                <!-- <mat-error *ngIf="importSequenceNumber.invalid">{{getErrorMessage(importSequenceNumber)}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="createdOnBehalfBy" required placeholder="createdOnBehalfBy">
+                <mat-error *ngIf="createdOnBehalfBy.invalid">{{getErrorMessage(createdOnBehalfBy)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="modifiedOnBehalfBy" required placeholder="modifiedOnBehalfBy">
+                <mat-error *ngIf="modifiedOnBehalfBy.invalid">{{getErrorMessage(modifiedOnBehalfBy)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="ownerIdType" required placeholder="Loại mã sở hữu">
+                <mat-error *ngIf="ownerIdType.invalid">{{getErrorMessage(ownerIdType)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="ownerId" required placeholder="Mã chủ sở hữu">
+                <mat-error *ngIf="ownerId.invalid">{{getErrorMessage(ownerId)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="owningBusinessUnit" required placeholder="Đơn vị sở hữu kinh doanh">
+                <mat-error *ngIf="owningBusinessUnit.invalid">{{getErrorMessage(owningBusinessUnit)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="owningUser" required placeholder="Người dùng sở hữu">
+                <mat-error *ngIf="owningUser.invalid">{{getErrorMessage(owningUser)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="owningTeam" required placeholder="Đội sở hưu">
+                <mat-error *ngIf="owningTeam.invalid">{{getErrorMessage(owningTeam)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="stateCodedisplay" required placeholder="Hiển thị mã trạng thái">
+                <mat-error *ngIf="stateCodedisplay.invalid">{{getErrorMessage(stateCodedisplay)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="statusCodedisplay" required placeholder="Trạng thái">
+                <mat-error *ngIf="statusCodedisplay.invalid">{{getErrorMessage(statusCodedisplay)}}</mat-error>
+            </mat-form-field>
+
+            <mat-action-row>
+                <button mat-mini-fab color="warn" (click)="nextStep()">>></button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Thông tin người sửa đổi
+                </mat-panel-title>
+                <mat-panel-description>
+
+                    <mat-icon>autorenew</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <input matInput [formControl]="timeZoneRuleVersionNumber" required type="number" min="1" placeholder="Số múi giờ">
+                <mat-error *ngIf="timeZoneRuleVersionNumber.invalid">{{getErrorMessage(timeZoneRuleVersionNumber)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="uTCConversionTimeZoneCode" required type="number" min="1" placeholder="Mã múi giờ uTC">
+                <mat-error *ngIf="uTCConversionTimeZoneCode.invalid">{{getErrorMessage(uTCConversionTimeZoneCode)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="versionNumber" required type="number" min="1" placeholder="Số phiên bản">
+                <!-- <mat-error *ngIf="versionNumber.invalid">{{getErrorMessage(versionNumber)}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="stateCode" required type="number" min="1" placeholder="Mã Code">
+                <mat-error *ngIf="stateCode.invalid">{{getErrorMessage(stateCode)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="statusCode" required type="number" min="1" placeholder="Trạng thái code">
+                <mat-error *ngIf="statusCode.invalid">{{getErrorMessage(statusCode)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="frequency" required type="number" min="1" placeholder="Tần số">
+                <mat-error *ngIf="frequency.invalid">{{getErrorMessage(frequency)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="frequencyInterval" required type="number" min="1" placeholder="Khoảng tần số">
+                <!-- <mat-error *ngIf="frequencyInterval.invalid">{{getErrorMessage(frequencyInterval)}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="nextPaymentAmount" required type="number" min="1" placeholder="Số tiền thanh toán tiếp theo">
+                <mat-error *ngIf="nextPaymentAmount.invalid">{{getErrorMessage(nextPaymentAmount)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="exchangeRate" required type="number" min="1" placeholder="Tỷ giá">
+                <mat-error *ngIf="exchangeRate.invalid">{{getErrorMessage(exchangeRate)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [formControl]="name" required placeholder="Tên">
+                <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="frequencyDisplay" required placeholder="Hiển thị tần số">
+                <mat-error *ngIf="frequencyDisplay.invalid">{{getErrorMessage(frequencyDisplay)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="transactionCurrencyId" required placeholder="ID tiền tệ giao dịch">
+                <mat-error *ngIf="transactionCurrencyId.invalid">{{getErrorMessage(transactionCurrencyId)}}</mat-error>
+            </mat-form-field>
+
+            <mat-action-row>
+                <button mat-mini-fab color="accent" (click)="prevStep()">Pre</button>
+                <button mat-mini-fab color="warn" (click)="nextStep()">>></button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Thông tin ngày đổi
+                </mat-panel-title>
+                <mat-panel-description>
+                    <mat-icon>calendar_today</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <input matInput matInput [formControl]="createdOn" placeholder="Tạo tại" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+                <mat-error *ngIf="createdOn.invalid">{{getErrorMessage(createdOn)}}</mat-error>
+            </mat-form-field>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field>
+                <input matInput matInput [formControl]="modifiedOn" placeholder="Sửa đổi vào" [matDatepicker]="pickerr" (focus)="pickerr.open()" readonly>
+                <mat-error *ngIf="modifiedOn.invalid">{{getErrorMessage(modifiedOn)}}</mat-error>
+            </mat-form-field>
+            <mat-datepicker #pickerr></mat-datepicker>
+            <mat-form-field>
+                <input matInput matInput [formControl]="overriddenCreatedOn" placeholder="Thông tin tạo khác" [matDatepicker]="picker1" (focus)="picker1.open()" readonly>
+                <mat-error *ngIf="overriddenCreatedOn.invalid">{{getErrorMessage(overriddenCreatedOn)}}</mat-error>
+            </mat-form-field>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-form-field>
+                <input matInput matInput [formControl]="firstPaymentDate" placeholder="Ngày thanh toán đầu tiên" [matDatepicker]="picker2" (focus)="picker2.open()" readonly>
+                <mat-error *ngIf="firstPaymentDate.invalid">{{getErrorMessage(firstPaymentDate)}}</mat-error>
+            </mat-form-field>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-form-field>
+                <input matInput matInput [formControl]="lastPaymentDate" placeholder="Ngày thanh toán cuối cùng" [matDatepicker]="picker3" (focus)="picker3.open()" readonly>
+                <mat-error *ngIf="lastPaymentDate.invalid">{{getErrorMessage(lastPaymentDate)}}</mat-error>
+            </mat-form-field>
+            <mat-datepicker #picker3></mat-datepicker>
+            <mat-form-field>
+                <input matInput matInput [formControl]="nextPaymentDate" placeholder="Ngày thanh toán tiếp theo" [matDatepicker]="picker4" (focus)="picker4.open()" readonly>
+                <mat-error *ngIf="nextPaymentDate.invalid">{{getErrorMessage(nextPaymentDate)}}</mat-error>
+            </mat-form-field>
+            <mat-datepicker #picker4></mat-datepicker>
+            <mat-action-row>
+                <button mat-mini-fab color="accent" (click)="prevStep()">Pre</button>
+                <button mat-mini-fab color="warn" (click)="nextStep()">>></button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Thông tin bổ sung
+                </mat-panel-title>
+                <mat-panel-description>
+                    <mat-icon>eco</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+                <input matInput [formControl]="nextPaymentAmountBase" required type="number" min="1" placeholder="Số tiền thanh toán tiếp theo">
+                <mat-error *ngIf="nextPaymentAmountBase.invalid">{{getErrorMessage(nextPaymentAmountBase)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="numberOfPayments" required type="number" min="1" placeholder="Số lượng thanh toán">
+                <mat-error *ngIf="numberOfPayments.invalid">{{getErrorMessage(numberOfPayments)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="recurringAmount" required type="number" min="1" placeholder="Định lượng">
+                <!-- <mat-error *ngIf="recurringAmount.invalid">{{getErrorMessage(recurringAmount)}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="recurringamountBase" required type="number" min="1" placeholder="Số tiền định kì">
+                <mat-error *ngIf="recurringamountBase.invalid">{{getErrorMessage(recurringamountBase)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="totalAmount" required type="number" min="1" placeholder="Tổng cộng">
+                <mat-error *ngIf="totalAmount.invalid">{{getErrorMessage(totalAmount)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="totalamountBase" required type="number" min="1" placeholder="Tổng số tiền cơ sở">
+                <mat-error *ngIf="totalamountBase.invalid">{{getErrorMessage(totalamountBase)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="omtSchedDefaultHardCreditToCustomer" required placeholder="Lịch trình tín dụng mặc định cho khách hàng">
+                <mat-error *ngIf="omtSchedDefaultHardCreditToCustomer.invalid">{{getErrorMessage(omtSchedDefaultHardCreditToCustomer)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="paymentScheduleDonorCommitmentId" required placeholder="Lịch thanh toán của nhà tài trợ">
+                <mat-error *ngIf="paymentScheduleDonorCommitmentId.invalid">{{getErrorMessage(paymentScheduleDonorCommitmentId)}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [formControl]="receiptOnAccountId" required placeholder="Biên nhận trên tài khoản">
+                <mat-error *ngIf="receiptOnAccountId.invalid">{{getErrorMessage(receiptOnAccountId)}}</mat-error>
+            </mat-form-field>
+
+
+
+            <mat-action-row>
+                <button mat-mini-fab color="accent" (click)="prevStep()">Pre</button>
+                <button mat-mini-fab color="primary" type="submit">Lưu
+
+                        </button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div mat-dialog-actions class="justify-content-between">
+        <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+
+    </div>
+</form>

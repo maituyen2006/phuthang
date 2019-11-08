@@ -1,0 +1,254 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} giải ngân</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+    <mat-tab-group>
+
+        <mat-tab label="Thông tin bản ghi">
+            <div class="d-flex flex-column" mat-dialog-content>
+                <mat-form-field>
+                    <input matInput [formControl]="createdOn" required placeholder="Tạo tại">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="createdBy" required placeholder="Người tạo">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="modifiedOn" required placeholder="Sửa đổi vào">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="modifiedBy" required placeholder="Người sửa đổi">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="createdOnBehalfBy" required placeholder="Được tạo bởi (Đại biểu)">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="modifiedOnBehalfBy" required placeholder="Được sửa đổi bởi (Đại biểu)">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="overriddenCreatedOn" required placeholder="Thông tin tạo khác">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="importSequenceNumber" required placeholder="Số thứ tự">
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+                </mat-action-row>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Thông tin thành viên sở hữu">
+            <div class="d-flex flex-column" mat-dialog-content>
+                <mat-form-field>
+                    <input matInput [formControl]="ownerIdType" required placeholder="Loại mã sở hữu">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="ownerId" required placeholder="Mã chủ sở hữu">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="owningBusinessUnit" required placeholder="Đơn vị sở hữu kinh doanh">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="owningUser" required placeholder="Người dùng sở hữu">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="owningTeam" required placeholder="Đội sở hữu">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="timeZoneRuleVersionNumber" required placeholder="Số múi giờ">
+                </mat-form-field>
+                <!-- <mat-form-field>
+                    <input matInput [formControl]="uTCConversionTimeZoneCode" required placeholder="uTCConversionTimeZoneCode">
+                </mat-form-field> -->
+                <mat-action-row>
+                    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+                </mat-action-row>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Thông tin giải ngân">
+            <div class="d-flex flex-column" mat-dialog-content>
+                <mat-form-field>
+                    <input matInput [formControl]="versionNumber" required placeholder="Số phiên bản">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="disbursementId" required placeholder="Mã giải ngân">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="stateCode" required placeholder="Mã Code">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="stateCodedisplay" required placeholder="Hiển thị mã trạng thái">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="statusCode" required placeholder="Trạng thái code">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="statusCodedisplay" required placeholder="Trạng thái">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="comment" required placeholder="Nhận xét">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="description" required placeholder="Mô tả">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="isAdjusted" required placeholder="isAdjusted">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="postedDate" required placeholder="Ngày đăng giải ngân">
+                </mat-form-field>
+                <!-- <mat-form-field>
+                  <input matInput [formControl]="recipientAccountId" required placeholder="recipientAccountId">
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput [formControl]="recipientContactId" required placeholder="recipientContactId">
+              </mat-form-field> -->
+                <mat-form-field>
+                    <input matInput [formControl]="requestDate" required placeholder="Ngày giải ngân được yêu cầu.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="scheduledDisbursementDate" required placeholder="Ngày Giải ngân dự kiến ​​sẽ được gửi.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="sentDate" required placeholder="Ngày giải ngân đã được gửi.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="status" required placeholder="Tình trạng giải ngân.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="statusDisplay" required placeholder="Hiển thị trạng thái">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="type" required placeholder="Các loại giải ngân.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="typeDisplay" required placeholder="Loại hiển thị">
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+                </mat-action-row>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Thực thể liên quan ">
+            <div class="d-flex flex-column" mat-dialog-content>
+                <mat-form-field>
+                    <input matInput [formControl]="name" required placeholder="Tên của thực thể tùy chỉnh.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="adjustmentComment" required placeholder="Ghi chú điều chỉnh người dùng">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="adjustmentReason" required placeholder="Lý do điều chỉnh">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="adjustmentReasondisplay" required placeholder="Hiển thị lý do điều chỉnh">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="adjustmentType" required placeholder="Loại điều chỉnh">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="adjustmentTypedisplay" required placeholder="Màn hình điều chỉnh">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="adjustsOriginalTransactionId" required placeholder="Điều chỉnh giao dịch gốc">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="amount" required placeholder="Số tiền giải ngân.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="transactionCurrencyId" required placeholder="Định danh tiền tệ liên quan đến thực thể.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="exchangeRate" required placeholder="Tỷ giá hối đoái đối với loại tiền được liên kết với thực thể">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="amountBase" required placeholder="Giá trị của Số tiền tính theo tiền tệ cơ sở.">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="awardId" required placeholder="Mã giải thưởng">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="bookDate" required placeholder="bookDate">
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+                </mat-action-row>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Thông tin giao dịch ">
+            <div class="d-flex flex-column" mat-dialog-content>
+                <mat-form-field>
+                    <input matInput [formControl]="budgetType" required placeholder="Loại ngân sách">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="budgetTypedisplay" required placeholder="Hiển thị loại ngân sách">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="currencyValueDate" required placeholder="Ngày Giá trị tiền tệ">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="disbursementChannelId" required placeholder="Mã kênh giải ngân">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="financeTypeId" required placeholder="Loại tài chính">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="flowTypeId" required placeholder="Loại lưu lượng">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="humanitarian" required placeholder="Giao dịch liên quan đến viện trợ nhân đạo">
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+                </mat-action-row>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Thông tin liên quan khác ">
+            <div class="d-flex flex-column" mat-dialog-content>
+                <mat-form-field>
+                    <input matInput [formControl]="periodEnd" required placeholder="Ngày kết thúc">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="periodStart" required placeholder="Ngày bắt đầu">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="providerActivityIdentifier" required placeholder="Định danh hoạt động của nhà cung cấp">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="recipientActivityIdentifier" required placeholder="Định danh hoạt động người nhận">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="recipientCountryDescription" required placeholder="Mô tả quốc gia người nhận">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="recipientRegionDescription" required placeholder="Mô tả khu vực người nhận">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="transactionType" required placeholder="Loại giao dịch">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="providerOrganizationId" required placeholder="Mã Tổ chức cung cấp">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="recipientCountryId" required placeholder="Mã quốc gia tiếp nhận">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="recipientOrganizationId" required placeholder="Mã Tổ chức tiếp nhận">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="recipientRegionId" required placeholder="Mã Vùng nhận">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [formControl]="tiedStatusId" required placeholder="tiedStatusId">
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-raised-button color="primary" type="submit"> Lưu </button>
+                    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+                </mat-action-row>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+</form>

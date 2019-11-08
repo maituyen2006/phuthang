@@ -1,0 +1,25 @@
+.example-tree-invisible {
+  display: none;
+}
+  
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+} 
+.tree-action{
+  margin-left: 10px;
+  font-size: 10px;
+  // visibility: hidden;
+}
+.tree-action mat-icon{
+  width: 19px;
+  height: 21px;
+  font-size: 21px;
+  margin-right: 5px;
+  cursor: pointer
+}
+.mat-tree-node:hover .tree-action{
+  visibility: visible;
+}

@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{isEdit?"Update":"Add"}} processor</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+            <input matInput [formControl]="paymentProcessorId" required placeholder="ID">
+            <mat-error *ngIf="paymentProcessorId.invalid">{{getErrorMessage(paymentProcessorId)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="createdBy" required placeholder="Creator">
+            <mat-error *ngIf="createdBy.invalid">{{getErrorMessage(createdBy)}}</mat-error>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions class="justify-content-between">
+        <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">
+      <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+      Save
+    </button>
+    </div>
+</form>

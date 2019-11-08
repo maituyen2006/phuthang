@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} Hóa đơn</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <div class="d-flex flex-column" mat-dialog-content>
+    <mat-form-field>
+      <input matInput [formControl]="name" required placeholder="Tên Hóa Đơn">
+      <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="emailAddress" required placeholder="Địa chỉ Email">
+      <mat-error *ngIf="emailAddress.invalid">{{getErrorMessage(emailAddress)}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="justify-content-between">
+    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+      Lưu
+    </button>
+  </div>
+</form>

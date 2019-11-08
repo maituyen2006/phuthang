@@ -1,0 +1,5 @@
+<div class="spinner-wrapper" *ngIf="myLoaderService.isLoading | async">
+    <mat-spinner></mat-spinner>
+  </div>
+<router-outlet *ngIf="loaded"></router-outlet>
+<!-- <app-credit-plan-recipient></app-credit-plan-recipient> -->

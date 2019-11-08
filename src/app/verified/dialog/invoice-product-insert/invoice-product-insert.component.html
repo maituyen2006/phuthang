@@ -1,0 +1,395 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} hóa đơn</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <mat-tab-group>
+    <mat-tab label="Record">
+      <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+          <input matInput [formControl]="createdOn"  placeholder="createdOn" type="date">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="createdBy"  placeholder="createdBy">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="createdOnBehalfBy"  placeholder="createdOnBehalfBy">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="importSequenceNumber"  placeholder="importSequenceNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="ownerIdType" placeholder="ownerIdType">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="ownerId"  placeholder="ownerId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="utcconversionTimeZoneCode"  placeholder="utcconversionTimeZoneCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="versionNumber"  placeholder="versionNumber">
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Records">
+      <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+          <input matInput [formControl]="modifiedBy"  placeholder="modifiedBy">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="modifiedOn"  placeholder="modifiedOn"  type="date">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="modifiedOnBehalfBy"  placeholder="modifiedOnBehalfBy">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="overriddenCreatedOn"  placeholder="overriddenCreatedOn" type="date">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="owningBusinessUnit"  placeholder="owningBusinessUnit">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="owningUser"  placeholder="owningUser">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="owningTeam"  placeholder="owningTeam">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="timeZoneRuleVersionNumber"  placeholder="timeZoneRuleVersionNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="transactionCurrencyId"  placeholder="transactionCurrencyId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="exchangeRate"  placeholder="exchangeRate">
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Invoice">
+      <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+          <input matInput [formControl]="invoiceDetailId"  placeholder="invoiceDetailId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="actualDeliveryOn"  placeholder="actualDeliveryOn" type="date">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="baseAmount"  placeholder="baseAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="baseAmountBase"  placeholder="baseAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="description"  placeholder="description">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="extendedAmount"  placeholder="extendedAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="extendedAmountBase"  placeholder="extendedAmountBase">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>InvoiceID</mat-label>
+          <mat-select [formControl]="invoiceId">
+            <mat-option *ngFor="let invoice of invoices" [value]="invoice.invoiceId">
+              {{invoice.invoiceId}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="invoiceIsPriceLocked"  placeholder="invoiceIsPriceLocked">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="invoiceStateCode"  placeholder="invoiceStateCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="invoiceStateCodedisplay"  placeholder="invoiceStateCodedisplay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="isCopied"  placeholder="isCopied">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="isPriceOverridden"  placeholder="isPriceOverridden">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="isProductOverridden"  placeholder="isProductOverridden">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="lineItemNumber"  placeholder="lineItemNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="manualDiscountAmount"  placeholder="manualDiscountAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="manualDiscountAmountBase"  placeholder="manualDiscountAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="parentBundleId"  placeholder="parentBundleId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="productAssociationId"  placeholder="productAssociationId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="productTypeCode"  placeholder="productTypeCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="productTypeCodedisplay"  placeholder="productTypeCodedisplay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="pricePerUnit"  placeholder="pricePerUnit">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="pricePerUnitBase"  placeholder="pricePerUnitBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="pricingErrorCode"  placeholder="pricingErrorCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="pricingErrorCodedisplay"  placeholder="pricingErrorCodedisplay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="productDescription"  placeholder="productDescription">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="productName"  placeholder="productName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="productId"  placeholder="productId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="quantity"  placeholder="quantity">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="quantityBackordered"  placeholder="quantityBackordered">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="quantityCancelled"  placeholder="quantityCancelled">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="quantityShipped"  placeholder="quantityShipped">
+        </mat-form-field>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Ship">
+      <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+          <input matInput [formControl]="salesRepId"  placeholder="salesRepId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shippingTrackingNumber"  placeholder="shippingTrackingNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToCity"  placeholder="shipToCity">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToCountry"  placeholder="shipToCountry">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToFax"  placeholder="shipToFax">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToFreightTermsCode"  placeholder="shipToFreightTermsCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToFreightTermsCodedisplay" 
+            placeholder="shipToFreightTermsCodedisplay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToLine1"  placeholder="shipToLine1">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToLine2"  placeholder="shipToLine2">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToLine3"  placeholder="shipToLine3">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToName"  placeholder="shipToName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToPostalCode"  placeholder="shipToPostalCode">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToStateOrProvince"  placeholder="shipToStateOrProvince">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="shipToTelephone"  placeholder="shipToTelephone">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="tax"  placeholder="tax">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="taxBase"  placeholder="taxBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="uoMId"  placeholder="uoMId">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="volumeDiscountAmount"  placeholder="volumeDiscountAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="volumeDiscountAmountBase"  placeholder="volumeDiscountAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="willCall"  placeholder="willCall">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="sequenceNumber"  placeholder="sequenceNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="propertyConfigurationStatus" 
+            placeholder="propertyConfigurationStatus">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="propertyConfigurationStatusdisplay" 
+            placeholder="propertyConfigurationStatusdisplay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="invoiceDetailName"  placeholder="invoiceDetailName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="salesOrderDetailId"  placeholder="salesOrderDetailId">
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Payment">
+      <div class="d-flex flex-column" mat-dialog-content>
+        <mat-form-field>
+          <input matInput [formControl]="parentBundleIdRef"  placeholder="parentBundleIdRef">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="billingMethod"  placeholder="billingMethod">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="billingMethoddisplay"  placeholder="billingMethoddisplay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="chargeableAmount"  placeholder="chargeableAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="chargeableAmountBase"  placeholder="chargeableAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="complimentaryAmount"  placeholder="complimentaryAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="complimentaryAmountBase"  placeholder="complimentaryAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="contractLine" placeholder="contractLine">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="contractLineAmount"  placeholder="contractLineAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="contractLineAmountBase"  placeholder="contractLineAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="invoicedTillDate"  placeholder="invoicedTillDate">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="invoicedTillDateBase"  placeholder="invoicedTillDateBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="nonChargeableAmount"  placeholder="nonChargeableAmount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="nonChargeableAmountBase"  placeholder="nonChargeableAmountBase">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [formControl]="project"  placeholder="project">
+        </mat-form-field>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div mat-dialog-actions class="justify-content-between">
+    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+      Lưu
+    </button>
+  </div>
+</form>

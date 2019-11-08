@@ -1,0 +1,278 @@
+<h1 mat-dialog-title>{{isEdit?"Cập nhật":"Thêm mới"}} khung giao hàng</h1>
+<mat-accordion class="example-headers-align">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          First
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <input matInput [formControl]="createdBy" placeholder="createdBy">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="modifiedBy" placeholder="modifiedBy">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="createdOnBehalfBy" placeholder="createdOnBehalfBy">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="modifiedOnBehalfBy" placeholder="modifiedOnBehalfBy">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="importSequenceNumber" placeholder="importSequenceNumber">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="ownerIdType" placeholder="ownerIdType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="ownerId" placeholder="ownerId">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="owningBusinessUnit" placeholder="owningBusinessUnit">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="owningUser" placeholder="owningUser">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="owningTeam
+        " placeholder="owningTeam
+        ">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="timeZoneRuleVersionNumber" placeholder="timeZoneRuleVersionNumber">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="utcconversionTimeZoneCode" placeholder="utcconversionTimeZoneCode">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="versionNumber" placeholder="versionNumber">
+      </mat-form-field>
+
+      <mat-action-row>
+        <button type="button" mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Second
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="stateCode" placeholder="stateCode">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="stateCodedisplay" placeholder="stateCodedisplay">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input  type="number" matInput [formControl]="statusCode" placeholder="statusCode">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input  matInput [formControl]="statusCodedisplay" placeholder="statusCodedisplay">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="name" placeholder="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="deliveryFrameworkType" placeholder="deliveryFrameworkType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="deliveryFrameworkTypedisplay" placeholder="deliveryFrameworkTypedisplay">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="description" placeholder="description">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="goal" placeholder="goal">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="scope" placeholder="scope">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="scopeDisplay" placeholder="scopeDisplay">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="status" placeholder="status">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="statusDisplay
+        " placeholder="statusDisplay
+        ">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="capitalSpend" placeholder="capitalSpend">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="collaborationType" placeholder="collaborationType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="msiatiCollaborationTypedisplay" placeholder="msiatiCollaborationTypedisplay">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="hierarchyLevel" placeholder="hierarchyLevel">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="number" matInput [formControl]="humanitarianScope" placeholder="humanitarianScope">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="iatiactivityId" placeholder="iatiactivityId">
+      </mat-form-field>
+
+      <mat-action-row>
+        <button type="button" mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button type="button" mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Third
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <input matInput [formControl]="account" placeholder="account">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="objectiveId" placeholder="objectiveId">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="parentDeliveryFrameworkId" placeholder="parentDeliveryFrameworkId">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="budgetNotProvided" placeholder="budgetNotProvided">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="defaultCurrency" placeholder="defaultCurrency">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="defaultFinanceType" placeholder="defaultFinanceType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="defaultFlowType" placeholder="defaultFlowType">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="defaultLanguage" placeholder="defaultLanguage">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="defaultTiedStatusId" placeholder="defaultTiedStatusId">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [formControl]="scopeId" placeholder="scopeId">
+      </mat-form-field>
+
+      <mat-action-row>
+        <button type="button" mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button type="button" mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Fourth
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <input matInput [formControl]="createdOn" placeholder="createdOn" [matDatepicker]="picker"
+          (focus)="picker.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <mat-form-field>
+        <input matInput [formControl]="modifiedOn" placeholder="modifiedOn" [matDatepicker]="picker1"
+          (focus)="picker1.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker1></mat-datepicker>
+
+      <mat-form-field>
+        <input matInput [formControl]="overriddenCreatedOn" placeholder="overriddenCreatedOn" [matDatepicker]="picker2"
+          (focus)="picker2.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker2></mat-datepicker>
+
+      <mat-form-field>
+        <input matInput [formControl]="endDate" placeholder="endDate" [matDatepicker]="picker3" (focus)="picker3.open()"
+          readonly>
+      </mat-form-field>
+      <mat-datepicker #picker3></mat-datepicker>
+
+      <mat-form-field>
+        <input matInput [formControl]="plannedEndDate" placeholder="plannedEndDate" [matDatepicker]="picker4"
+          (focus)="picker4.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker4></mat-datepicker>
+
+      <mat-form-field>
+        <input matInput [formControl]="plannedStartDate" placeholder="plannedStartDate" [matDatepicker]="picker5"
+          (focus)="picker5.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker5></mat-datepicker>
+
+      <mat-form-field>
+        <input matInput [formControl]="startDate" placeholder="startDate" [matDatepicker]="picker6"
+          (focus)="picker6.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker6></mat-datepicker>
+
+
+      <mat-action-row>
+        <button type="button" mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button type="button" mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <div mat-dialog-actions class="justify-content-between">
+      <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+      <button mat-raised-button color="primary" type="submit">
+        <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+        Lưu
+      </button>
+    </div>
+  </form>
+</mat-accordion>

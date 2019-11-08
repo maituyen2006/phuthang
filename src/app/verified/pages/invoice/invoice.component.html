@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <mat-card class="example-card">
+    <mat-card-header class="justify-content-between">
+      <mat-card-title>Danh sách Hóa Đơn</mat-card-title>
+    </mat-card-header>
+    <div class="mb-2 style-flex">
+      <div>
+        <button mat-raised-button color="primary" (click)="insert()" class="mr-2">Thêm mới hóa đơn</button>
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Xuất/Nhập dữ liệu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="importTemplate()">File import mẫu</button>
+          <button mat-menu-item (click)="inputFile.click()">Nhập từ excel</button>
+          <button mat-menu-item (click)="exportAsExcel()">Xuất ra Excel</button>
+        </mat-menu>
+        <input type="file" #inputFile class="d-none" (change)="handleFileInput($event.target)" />
+      </div>
+      
+    </div>
+    <mat-form-field style="width: 100%">
+      <input matInput placeholder="Từ khóa" #keyword (keyup)="applyFilter($event.target.value)">
+      <button mat-button *ngIf="keyword.value" matSuffix mat-icon-button aria-label="Clear"
+        (click)="keyword.value='';applyFilter('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <br />
+    <mat-card-content>
+      <div class="table-responsive">
+        <table id="staff" mat-table [dataSource]="dataSource" matSort matSortDisableClear width="100%"
+          class="mat-elevation-z8">
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="invoiceId">
+<<<<<<< HEAD
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã ID Hóa Đơn</th>
+=======
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã ID</th>
+>>>>>>> ea7985229e7531563a9b6c9a7fe508cb42b9df3c
+            <td mat-cell *matCellDef="let element">{{element.invoiceId}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+<<<<<<< HEAD
+          <ng-container matColumnDef="emailAddress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</th>
+            <td mat-cell *matCellDef="let element">{{element.emailAddress}}</td>
+          </ng-container>
+=======
+
+>>>>>>> ea7985229e7531563a9b6c9a7fe508cb42b9df3c
+        
+          <!-- IsActive Column -->
+          
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef style="width:1%">#</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-menu #appMenu="matMenu" xPosition="before">
+<<<<<<< HEAD
+                <button (click)="edit(element.name)" mat-menu-item>Sửa hóa đơn</button>            
+                <button (click)="delete(element.invoiceId)" mat-menu-item>Xóa hóa đơn</button>
+=======
+                <button (click)="edit(element)" mat-menu-item>Sửa nhân viên</button>            
+                <button (click)="delete(element.invoiceId)" mat-menu-item>Xóa nhân viên</button>
+>>>>>>> ea7985229e7531563a9b6c9a7fe508cb42b9df3c
+                <a href="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl={{element.adminCode}}&chld=L|1&choe=UTF-8"
+                  target="_blank" mat-menu-item>Tải QR code</a>
+              </mat-menu>
+              <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+        
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-paginator showFirstLastButtons [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 50]">
+      </mat-paginator>
+    </mat-card-actions>
+  </mat-card>
+</div>

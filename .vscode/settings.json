@@ -1,0 +1,9 @@
+{
+    "git.ignoreLimitWarning": true,
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/2645d18f-f656-46b4-b46b-69edcb85b29d/resourceGroups/Learn-5894d99c-b998-4eca-882f-850b23fe0dd0/providers/Microsoft.Web/sites/letri99",
+    "appService.deploySubpath": "dist\\PhuThangERPAdmin"
+}

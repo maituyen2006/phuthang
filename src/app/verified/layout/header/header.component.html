@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md navbar-light">
+  <a class="navbar-brand align-items-center" [routerLink]="['/verified/default']">
+    <img src="assets/img/logo.png" alt="" height="50">
+  </a>
+  <button class="navbar-toggler" (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav flex-fill">
+      <ng-container *ngFor="let item of filterModuleByParentId(1)">
+        <li class="nav-item" [ngSwitch]="hasChildren(item.id)">
+          <ng-container *ngSwitchCase="true">
+            <a href="javascript:void(0)" class="nav-link" [matMenuTriggerFor]="childrenMenu">
+              <mat-icon>{{item.icon}}</mat-icon>
+              {{item.name}}
+            </a>
+            <mat-menu #childrenMenu="matMenu" [xPosition]="'after'" [overlapTrigger]="false">
+              <ng-container *ngFor="let childrenItem of filterModuleByParentId(item.id)">
+                <div [ngSwitch]="hasChildren(childrenItem.id)">
+                  <ng-container *ngSwitchCase="true">
+                    <button mat-menu-item [matMenuTriggerFor]="grandChildrenMenu">{{childrenItem.name}}</button>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="false">
+                    <button [routerLink]="['/verified'+childrenItem.routeLink]"
+                      mat-menu-item>{{childrenItem.name}}</button>
+                  </ng-container>
+                </div>
+                <mat-menu #grandChildrenMenu="matMenu" [xPosition]="'after'" [overlapTrigger]="false">
+                  <ng-container *ngFor="let grandChildrenItem of filterModuleByParentId(childrenItem.id)">
+                    <button [routerLink]="['/verified'+grandChildrenItem.routeLink]"
+                      mat-menu-item>{{grandChildrenItem.name}}</button>
+                  </ng-container>
+                </mat-menu>
+                <mat-menu #grandChildrenMenu="matMenu" [xPosition]="'after'" [overlapTrigger]="false">
+                  <ng-container *ngFor="let grandChildrenItem of filterModuleByParentId(childrenItem.id)">
+                    <button [routerLink]="['/verified'+grandChildrenItem.routeLink]"
+                      mat-menu-item>{{grandChildrenItem.name}}</button>
+                  </ng-container>
+                </mat-menu>
+              </ng-container>
+            </mat-menu>
+          </ng-container>
+          <ng-container *ngSwitchCase="false">
+            <a class="nav-link" [routerLink]="['/verified'+item.routeLink]">
+              <mat-icon>{{item.icon}}</mat-icon>
+              {{item.name}}
+            </a>
+          </ng-container>
+        </li>
+      </ng-container>
+      <li class="nav-item nav-account align-items-center">
+        <button mat-raised-button color="danger" class="text-left" href="javascript:void(0)" [matMenuTriggerFor]="menu">
+          <img class="avatar" height="25" src="assets/img/avatar.png" /> {{admin.fullName}}
+          <i class="material-icons">arrow_drop_down</i>
+        </button>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="after">
+          <button mat-menu-item>Thông tin cá nhân</button>
+          <button mat-menu-item (click)="changePassword()">Đổi mật khẩu</button>
+          <button mat-menu-item>Bảo mật</button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="logout()">Đăng xuất</button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</nav>

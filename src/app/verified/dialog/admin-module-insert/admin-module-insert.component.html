@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Thêm mới module</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <div class="d-flex flex-column" mat-dialog-content>
+    <mat-form-field>
+      <input matInput [formControl]="name" required placeholder="Tên module">
+      <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="routeLink" placeholder="Đường dẫn">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [formControl]="icon" placeholder="Icon">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" max="10000" [formControl]="orderNumber" placeholder="Thứ tự hiển thị">
+    </mat-form-field>
+    <mat-checkbox [formControl]="isShow" color="primary">Hiển thị</mat-checkbox>
+  </div>
+  <div mat-dialog-actions class="justify-content-between">
+    <button mat-raised-button (click)="dialogRef.close()">Hủy</button>
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+      Lưu
+    </button>
+  </div>
+</form>

@@ -1,0 +1,30 @@
+//Trương Xuân Hiếu
+export class CreditPlanRecipient {
+  createdOn?:Date;
+  createdBy?:string;
+  modifiedOn?:Date;
+  modifiedBy?:string;
+  createdOnBehalfBy?:string;
+  modifiedOnBehalfBy?:string;
+  overriddenCreatedOn?:Date;
+  importSequenceNumber?:Number;
+  ownerIdType?:string;
+  ownerId?:string;
+  owningBusinessUnit?:string;
+  owningUser?:string;
+  owningTeam?:string;
+  timeZoneRuleVersionNumber?:Number;
+  uTCConversionTimeZoneCode?:Number;
+  versionNumber?:Number;
+  creditRecipientId?:string;
+  stateCode?:Number;
+  stateCodedisplay?:string;
+  statusCode?:Number;
+  statusCodedisplay?:string;
+  name?:string;
+  creditPlanRecipientCustomerIdType?:string;
+  creditPlanRecipientCustomerId?:string;
+  percentageOfPayment?:Number;
+  softCreditReason?:Number;
+  softCreditReasondisplay?:string;
+}
